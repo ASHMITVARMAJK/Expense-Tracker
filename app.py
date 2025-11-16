@@ -6,8 +6,9 @@ from passlib.hash import sha256_crypt
 from functools import wraps
 import timeago
 import datetime
-from wtforms.fields.html5 import EmailField
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from wtforms.fields import EmailField
+
+from itsdangerous.url_safe import URLSafeTimedSerializer as Serializer
 from flask_mail import Mail, Message
 import plotly.graph_objects as go
 
@@ -23,9 +24,6 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
 
 
 class SignUpForm(Form):
